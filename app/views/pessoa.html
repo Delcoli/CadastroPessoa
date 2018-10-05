@@ -1,0 +1,139 @@
+<div class="row">
+	<div class="col-md-8">
+		<button ng-click="pessoa = {}" class="btn btn-primary" data-toggle="modal" data-target="#modalPessoa">
+			<span class="glyphicon glyphicon-plus"></span>Nova Pessoa</button>
+	</div>
+	<div class="col-md-4">
+		<input class="form-control" placeholder="Pesquisar" ng-model="pesquisar">
+	</div>
+</div>
+
+<hr>
+<div class="row">
+	<div class="col-md-12">
+		<table class="table table-striped" ng-init="listaPessoas()">
+			<thead>
+				<th>#</th>
+				<th>Nome</th>
+				<th>E-mail</th>
+				<th>Endereço</th>
+				<th>Nascimento</th>
+				<th>Telefone</th>
+				<th></th>
+			</thead>
+			<tbody>
+				<!-- Listagem das pessoas cadastradas -->
+				<tr dir-paginate="pessoa in pessoas|filter:pesquisar|itemsPerPage:10">
+					<td>{{pessoa.id}}</td>
+					<td>{{pessoa.nome}}</td>
+					<td>{{pessoa.email}}</td>
+					<td>{{pessoa.endereco}}</td>
+					<td>{{pessoa.nascimento}}</td>
+					<td>{{pessoa.telefone}}</td>
+					<td>
+						<button class="btn btn-primary btn-xs" ng-click="verFoto(pessoa)">
+							<span class="glyphicon glyphicon-zoom-in"></span>Ver foto</button>
+
+						<button class="btn btn-info btn-xs" ng-click="editar(pessoa)">
+							<span class="glyphicon glyphicon-pencil"></span>Editar</button>
+
+						<button class="btn btn-danger btn-xs" ng-click="excluir(pessoa)">
+							<span class="glyphicon glyphicon-trash"></span>Excluir</button>
+
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<!-- Paginação -->
+<div class="row">
+	<div class="col-md-12 text-center">
+		<dir-pagination-controls>
+		</dir-pagination-controls>
+	</div>
+</div>
+
+<!-- Modal para Cadastro e Edição de pessoa -->
+<div class="modal fade" id="modalPessoa" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-dialog-grande" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span></button>
+
+				<h4 class="modal-title">Pessoa</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+
+					<div class="col-md-6">
+						<div class="col-md-12">
+							<label>Nome</label>
+							<input class="form-control" type="text" ng-model="pessoa.nome">
+						</div>
+						<div class="col-md-12">
+							<label>E-mail</label>
+							<input class="form-control" type="text" ng-model="pessoa.email">
+						</div>
+						<div class="col-md-12">
+							<label>Data de Nascimento</label>
+							<input class="form-control" type="text" ng-model="pessoa.nascimento">
+						</div>
+						<div class="col-md-12">
+							<label>Endereço</label>
+							<input class="form-control" type="text" ng-model="pessoa.endereco">
+						</div>
+
+						<div class="col-md-12">
+							<label>Telefone</label>
+							<input class="form-control" type="text" ng-model="pessoa.telefone">
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<img ng-src="{{pessoa.foto || '//:0'}}" width="400" height="300" />
+						<div class="div-botao">
+							<button class="btn botao-azul" ng-click="abrirCamera()">Tirar Foto</button>
+							<button ng-show="pessoa.foto" ng-click="removerFoto()" class="btn botao-laranja">
+								Remover Foto
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" ng-click="pessoa = {}" data-dismiss="modal">
+					Cancelar
+				</button>
+				<button type="button" class="btn btn-primary" ng-click="salvar()">Salvar</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal para visualização da foto cadastrada -->
+<div class="modal fade" id="modalVerFotoPessoa" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-dialog-pequeno" style="width: 402px" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span></button>
+
+				<h4 class="modal-title">Foto de {{nomePessoa}}</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<img ng-src="{{foto || '//:0'}}" width="400" height="300" />
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" ng-click="pessoa = {}" data-dismiss="modal">
+					Cancelar
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+

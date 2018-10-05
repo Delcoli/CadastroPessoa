@@ -1,0 +1,33 @@
+.modal-dialog-grande {
+    min-width: 900px;
+}
+.modal-dialog .modal-dialog-pequeno {
+    min-width: 402px !important;
+}
+.div-botao {
+    position: absolute;
+    width: 400px;
+    top: 260px;
+    text-align: center;
+}
+.botao-laranja {
+    background: 0 0;
+    border-color: #ff9d46;
+    color: #ff9d46;
+}
+.botao-laranja:hover {
+    border-color: #ffffff;
+    color: #ffffff;
+    background-color: #ff9d46;
+}
+.botao-azul {
+    background: 0 0;
+    border-color: #5bc0de;
+    color: #5bc0de;
+}
+.botao-azul:hover {
+    border-color: #5bc0de;
+    color: #ffffff;
+    background-color: #5bc0de;
+}
+

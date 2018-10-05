@@ -1,0 +1,29 @@
+{
+  "name": "cadastropessoa",
+  "productName": "CadastroPessoa",
+  "description": "Aplicativo de cadastro de pessoas com integração com a WebCam",
+  "version": "0.0.1",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist:win32": "electron-packager . CadastroPessoa --overwrite --asar --out=build --platform=win32 --arch=ia32",
+    "dist:win64": "electron-packager . CadastroPessoa --overwrite --asar --out=build --platform=win32 --arch=x64",
+    "dist:linux32": "electron-packager . CadastroPessoa --overwrite --asar --out=build --platform=linux --arch=ia32",
+    "dist:linux64": "electron-packager . CadastroPessoa --overwrite --asar --out=build --platform=linux --arch=x64",
+    "dist:osx": "electron-packager . CadastroPessoa --overwrite --asar --out=build --platform=darwin --arch=x64",
+    "instalador:win-setup": "node instalador/criarInstaladorWindows.js"
+  },
+  "devDependencies": {
+    "electron": "^2.0.7",
+    "electron-packager": "^12.1.0",
+    "electron-winstaller": "^2.6.4"
+  },
+  "dependencies": {
+    "angular": "^1.7.4",
+    "angular-route": "^1.7.4",
+    "angular-utils-pagination": "^0.11.1",
+    "bootstrap": "^3.3.6",
+    "jquery": "^3.3.1",
+    "sqlite-sync": "^0.3.8"
+  }
+}

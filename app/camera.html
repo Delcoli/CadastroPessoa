@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>WebCam</title>
+    <!--Carregando o estilo da pagina !-->
+    <link rel="stylesheet" href="./css/camera.css">
+</head>
+
+<body>
+
+    <!--Div com a exibição do video para tirar a foto !-->
+    <div>
+        <video id="video" width="400" height="300" autoplay></video>
+    </div>
+
+    <!--Div com o botão que irá tirar a foto !-->
+    <div class="div-botao">
+        <button id="tirar-foto" class="btn botao">Tirar Foto</button>
+    </div>
+
+    <!--Div oculta que armazena a foto tirada para o envio para a página index !-->
+    <div>
+        <canvas id="canvas" width="400" height="300" class="display-none"></canvas>
+    </div>
+
+    <!--Carregando o script camera.js !-->
+    <script src="./js/camera.js"></script>
+
+</body>
+
+</html>
